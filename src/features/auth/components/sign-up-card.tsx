@@ -24,6 +24,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { signUpSchema } from "@/features/auth/schemas";
+import { useRegister } from "@/features/auth/api/use-register";
 
 export const SignUpCard = () => {
   const form = useForm<z.infer<typeof signUpSchema>>({
@@ -35,8 +36,10 @@ export const SignUpCard = () => {
     },
   });
 
+  const { mutate } = useRegister();
+
   const onSubmit = (values: z.infer<typeof signUpSchema>) => {
-    console.log(values);
+    mutate({ json: values });
   };
 
   return (
@@ -116,7 +119,7 @@ export const SignUpCard = () => {
       </CardContent>
       <div className="px-7 relative">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white text-sm text-neutral-500 px-4">
-          or create an account with
+          or
         </div>
         <Separator />
       </div>
@@ -125,7 +128,7 @@ export const SignUpCard = () => {
           variant="secondary"
           disabled={false}
           size="lg"
-          className="w-full font-normal"
+          className="w-full"
         >
           <FcGoogle className="mr-2 size-5" />
           Sign up with Google
@@ -134,7 +137,7 @@ export const SignUpCard = () => {
           variant="secondary"
           disabled={false}
           size="lg"
-          className="w-full font-normal"
+          className="w-full"
         >
           <FaGithub className="mr-2 size-5" />
           Sign up with Github

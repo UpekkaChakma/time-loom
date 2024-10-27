@@ -18,11 +18,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { useLogin } from "@/features/auth/api/use-login";
-import { signUpSchema } from "@/features/auth/schemas";
+import { loginSchema } from "@/features/auth/schemas";
 
 export const SignInCard = () => {
-  const form = useForm<z.infer<typeof signUpSchema>>({
-    resolver: zodResolver(signUpSchema),
+  const form = useForm<z.infer<typeof loginSchema>>({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "",
       password: "",
@@ -31,7 +31,7 @@ export const SignInCard = () => {
 
   const { mutate } = useLogin();
 
-  const onSubmit = (values: z.infer<typeof signUpSchema>) => {
+  const onSubmit = (values: z.infer<typeof loginSchema>) => {
     mutate({ json: values });
   };
   return (
@@ -84,7 +84,7 @@ export const SignInCard = () => {
       </CardContent>
       <div className="px-7 relative">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white text-sm text-neutral-500 px-4">
-          or login with
+          or
         </div>
         <Separator />
       </div>
@@ -93,7 +93,7 @@ export const SignInCard = () => {
           variant="secondary"
           disabled={false}
           size="lg"
-          className="w-full font-normal"
+          className="w-full"
         >
           <FcGoogle className="mr-2 size-5" />
           Sign in with Google
@@ -102,7 +102,7 @@ export const SignInCard = () => {
           variant="secondary"
           disabled={false}
           size="lg"
-          className="w-full font-normal"
+          className="w-full"
         >
           <FaGithub className="mr-2 size-5" />
           Sign in with Github
