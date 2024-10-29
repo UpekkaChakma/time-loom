@@ -62,7 +62,7 @@ const UserButton = () => {
         <Separator className="mb-1" />
         <DropdownMenuItem
           onClick={() => logout()}
-          className="h-10 flex justify-center items-center text-amber-700 font-medium"
+          className="h-10 flex justify-center items-center text-amber-700 font-medium cursor-pointer"
         >
           <LogOut className="size-4 mr-2" />
           Log out
