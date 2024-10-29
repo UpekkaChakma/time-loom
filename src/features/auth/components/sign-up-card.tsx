@@ -1,10 +1,11 @@
-import React from "react";
-import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
+"use client";
+
 import Link from "next/link";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
 
 import {
   Card,
@@ -112,7 +113,7 @@ export const SignUpCard = () => {
               )}
             />
             <Button disabled={false} size="lg" className="w-full">
-              Sign Up
+              Register
             </Button>
           </form>
         </Form>
