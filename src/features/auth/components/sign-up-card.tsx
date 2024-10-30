@@ -37,7 +37,7 @@ export const SignUpCard = () => {
     },
   });
 
-  const { mutate } = useRegister();
+  const { mutate, isPending } = useRegister();
 
   const onSubmit = (values: z.infer<typeof signUpSchema>) => {
     mutate({ json: values });
@@ -112,7 +112,7 @@ export const SignUpCard = () => {
                 </FormItem>
               )}
             />
-            <Button disabled={false} size="lg" className="w-full">
+            <Button disabled={isPending} size="lg" className="w-full">
               Register
             </Button>
           </form>
@@ -127,7 +127,7 @@ export const SignUpCard = () => {
       <CardContent className="p-7 pt-9 flex flex-col gap-y-4">
         <Button
           variant="secondary"
-          disabled={false}
+          disabled={isPending}
           size="lg"
           className="w-full"
         >
@@ -136,7 +136,7 @@ export const SignUpCard = () => {
         </Button>
         <Button
           variant="secondary"
-          disabled={false}
+          disabled={isPending}
           size="lg"
           className="w-full"
         >

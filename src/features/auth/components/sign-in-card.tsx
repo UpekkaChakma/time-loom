@@ -30,7 +30,7 @@ export const SignInCard = () => {
     },
   });
 
-  const { mutate } = useLogin();
+  const { mutate, isPending } = useLogin();
 
   const onSubmit = (values: z.infer<typeof loginSchema>) => {
     mutate({ json: values });
@@ -53,7 +53,6 @@ export const SignInCard = () => {
                       {...field}
                       type="email"
                       placeholder="Enter email address"
-                      disabled={false}
                     />
                   </FormControl>
                   <FormMessage />
@@ -70,14 +69,17 @@ export const SignInCard = () => {
                       {...field}
                       type="password"
                       placeholder="Enter password"
-                      disabled={false}
                     />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button disabled={false} size="lg" className="w-full capitalize">
+            <Button
+              disabled={isPending}
+              size="lg"
+              className="w-full capitalize"
+            >
               Log in
             </Button>
           </form>
@@ -92,7 +94,7 @@ export const SignInCard = () => {
       <CardContent className="p-7 pt-9 flex flex-col gap-y-4">
         <Button
           variant="secondary"
-          disabled={false}
+          disabled={isPending}
           size="lg"
           className="w-full"
         >
@@ -101,7 +103,7 @@ export const SignInCard = () => {
         </Button>
         <Button
           variant="secondary"
-          disabled={false}
+          disabled={isPending}
           size="lg"
           className="w-full"
         >
