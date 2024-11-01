@@ -1,4 +1,5 @@
 import UserButton from "@/features/auth/components/user-button";
+import MobileSidebar from "./mobile-sidebar";
 
 const Navbar = () => {
   return (
@@ -8,6 +9,9 @@ const Navbar = () => {
         <p className="text-muted-foreground">
           Monitor all of your projects and task here
         </p>
+      </div>
+      <div className="block lg:hidden">
+        <MobileSidebar />
       </div>
       <UserButton />
     </nav>
